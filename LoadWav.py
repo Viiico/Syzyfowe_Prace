@@ -3,6 +3,7 @@ import wave
 
 class LoadWav:
 
+        # pobiera wszystkie dane z pliku wav, oblicza jego czas i zapisuje sygnał do arraya zdognie z sampwidth
     def __init__(self, fileName):
         self.fileName = fileName
         file = wave.open(self.fileName, "rb")
@@ -26,6 +27,7 @@ class LoadWav:
 
         file.close()
 
+        # printuje parametry pliku
     def printParams(self):
         print("nchannels: " + str(self.nchannels))
         print("sampwidth: " + str(self.sampwidth))
@@ -35,9 +37,11 @@ class LoadWav:
         print("compname: " + str(self.compname))
         print("t: " + str(self.t))
 
+        # zwraca paramtery pliku
     def getParams(self):
         return self.fileName, self.nchannels, self.sampwidth, self.framerate, self.nframes, self.compname, self.comptype, self.t
 
+        # zwraca sygnał
     def getWavData(self):
         return self.wavData
 
