@@ -35,7 +35,8 @@ class WavAnalyzer:
 
         padX = self.padSignal()
         self.signalFFT = fft2(padX)
-        self.freq = np.fft.fftfreq(len(padX), 1 / self.file.framerate)
+        self.freq = np.linspace(0, self.file.getParams()[3]//2, len(self.signalFFT)//2)
+        self.freq = np.concatenate((self.freq, -self.freq[::-1]))
 
         # znajdowanie głównych składowych sygnału
     def findPeaks(self, ignoreRatio, spacing):
